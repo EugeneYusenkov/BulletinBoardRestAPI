@@ -1,0 +1,480 @@
+{
+	"info": {
+		"_postman_id": "6c35af5e-c356-4f9e-900d-cf20eb12a15e",
+		"name": "BBoard REST API Testbed",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "/",
+					"item": [
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "phone",
+											"value": "063 277 84 12",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "Helena",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "helena24@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "helena2424",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/users",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users"
+									]
+								},
+								"description": "[POST] Register and add new user"
+							},
+							"response": []
+						},
+						{
+							"name": "Search users",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/users/?name=Oleg&email=olegro777@gmail.com",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users",
+										""
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Oleg"
+										},
+										{
+											"key": "email",
+											"value": "olegro777@gmail.com"
+										}
+									]
+								},
+								"description": "search users by params and order. response is array of found users"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "/me",
+					"item": [
+						{
+							"name": "Get current user",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjMzLCJpYXQiOjE2MDk1OTkxOTMsImV4cCI6MTYwOTU5OTI1M30.c_XOoDtNwkCdVayVdtUu211aOsfl4VR72X1TJd6ZVq8"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/users/me",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users",
+										"me"
+									]
+								},
+								"description": "get cuurent user by authorization header (token)\r\nresponse is info about user"
+							},
+							"response": []
+						},
+						{
+							"name": "Update current user",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "7e1d1f67-597b-4dfc-aa40-a9980a85f774",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Oleg",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "olegro77724@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "current_password",
+											"value": "777olegro777",
+											"type": "text"
+										},
+										{
+											"key": "new_password",
+											"value": "olegro777",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/users/me",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users",
+										"me"
+									]
+								},
+								"description": "update user fields. response is updated user info"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "/:id",
+					"item": [
+						{
+							"name": "Get user by ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "7e1d1f67-597b-4dfc-aa40-a9980a85f774",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/users/27",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users",
+										"27"
+									]
+								},
+								"description": "get user by id, response is user info"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "sessions",
+			"item": [
+				{
+					"name": "/",
+					"item": [
+						{
+							"name": "Login user",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "helena24@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "helena2424",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/sessions",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"sessions"
+									]
+								},
+								"description": "login user with email and password. response is user's token"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "items",
+			"item": [
+				{
+					"name": "/",
+					"item": [
+						{
+							"name": "Search items",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/items?title=IPhone X&user_id=26&order_by=price&order_type=asc",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"items"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "IPhone X"
+										},
+										{
+											"key": "user_id",
+											"value": "26"
+										},
+										{
+											"key": "order_by",
+											"value": "price"
+										},
+										{
+											"key": "order_type",
+											"value": "asc"
+										}
+									]
+								},
+								"description": "search items by params and order by price or created date stamp\r\nresponse is array of found items"
+							},
+							"response": []
+						},
+						{
+							"name": "Create item",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjMzLCJpYXQiOjE2MDk1OTg0NjIsImV4cCI6MTYwOTYwMjA2Mn0.h78GokwXx_v3ei8Rkf4fgn8KISb1rkUx19XHwzfmkWA",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "title",
+											"value": "MacBook 2024",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "3999",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/items",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"items"
+									]
+								},
+								"description": "create item. response is created item info"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "/:id",
+					"item": [
+						{
+							"name": "Get item by ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/items/20",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"items",
+										"20"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update item",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "dbf069af-6787-470f-b5dd-bde1d3fc1d9e",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "title",
+											"value": "IPhone SE",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "550",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/items/19",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"items",
+										"19"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete item",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "e356a8c5-16a8-46a7-8fb4-3246a93f6b4d",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/items/24",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"items",
+										"24"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "/:id/image",
+					"item": [
+						{
+							"name": "Upload item image",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "dbf069af-6787-470f-b5dd-bde1d3fc1d9e",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/C:/Users/eugen/Desktop/12promax.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/items/22/image",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"items",
+										"22",
+										"image"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove item image",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "e356a8c5-16a8-46a7-8fb4-3246a93f6b4d",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/items/24/image",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"items",
+										"24",
+										"image"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
