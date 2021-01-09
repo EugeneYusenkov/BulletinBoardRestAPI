@@ -1,0 +1,33 @@
+{
+  "name": "bboard_rest_api",
+  "version": "1.0.0",
+  "description": "bulletin board application rest API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Status: OK\"",
+    "start": "start_app",
+    "start_mysql": "start_mysql"
+  },
+  "keywords": [
+    "bulletin_board",
+    "rest_api",
+    "api"
+  ],
+  "author": "Eugene Yusenkov",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "http-errors": "^1.8.0",
+    "joi": "^17.3.0",
+    "joi-phone-number": "^5.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
+    "multer": "^1.4.2",
+    "mysql2": "^2.2.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
